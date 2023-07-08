@@ -26,6 +26,8 @@ import { ListCategoryComponent } from './components/list-category/list-category.
 import { UpdateCategoryComponent } from './components/update-category/update-category.component';
 import { AddBlogComponent } from './components/add-blog/add-blog.component';
 import { ListBlogComponent } from './components/list-blog/list-blog.component';
+import { UpdateBlogComponent } from './components/update-blog/update-blog.component';
+import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ListBlogComponent } from './components/list-blog/list-blog.component';
     ListCategoryComponent,
     UpdateCategoryComponent,
     AddBlogComponent,
-    ListBlogComponent
+    ListBlogComponent,
+    UpdateBlogComponent,
+    BlogDetailsComponent
   ],
   imports: [
     BrowserModule,

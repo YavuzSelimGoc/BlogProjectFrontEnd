@@ -36,6 +36,10 @@
                                         </th>
                                         <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
                                         colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Blog Etiketleri
+                                        </th>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column descending">Blog Tarihi
                                         </th>
                                         <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
@@ -59,13 +63,14 @@
                                 <td>{{item.blogTitle}}</td>
                                 <td>{{item.blogContent}}</td>
                                 <td>{{item.blogWriter}}</td>
+                                <td>{{item.blogTag}}</td>
                                 <td>{{item.blogDate}}</td>
                                 <td>  <img [src]="createImgPath(item.blogImage)" alt="product" style="width: 75px; height: 75px;" ></td>
                              
                               
-                                <td ><a *ngIf="!item.blogStatus" (click)="active(item);"  href="admin/listCategory" class="btn btn-success">Aktif Et</a> <a *ngIf="item.blogStatus" (click)="passive(item);" href="admin/listCategory" class="btn btn-warning">Pasif Et</a></td>
-                                <td><a routerLink="/admin/updateCategory/blog/{{item.blogId}}" class="btn btn-primary">Güncelle</a></td>
-                                <td><a (click)="delete(item);" href="admin/listBlog" class="btn btn-danger">Sil</a></td> 
+                                <td ><a *ngIf="!item.blogStatus" (click)="active(item);"  href="admin/listBlog" class="btn btn-success">Aktif Et</a> <a *ngIf="item.blogStatus" (click)="passive(item);" href="admin/listBlog" class="btn btn-warning">Pasif Et</a></td>
+                                <td><a routerLink="/admin/updateBlog/blog/{{item.blogId}}" class="btn btn-primary">Güncelle</a></td>
+                                <td><a (click)="deleteBox(item);"  class="btn btn-danger">Sil</a></td> 
                                 
                               </tr>
   

@@ -1,0 +1,56 @@
+<div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Ürün Kayıt Formu</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form [formGroup]="blogUpdateForm">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Blog Başlık</label>
+          <input  class="form-control" formControlName="blogTitle" >
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Ürünün Kategorisi</label>
+            <!-- <input type="number"
+            id="categoryID"
+            formControlName="categoryID" class="form-control"
+            placeholder="Kategori"/> -->
+             <select class="form-select" formControlName="categoryId" >
+                <option *ngFor="let item of category" [value]="item.categoryId">{{item.categoryName}}</option>
+              </select> 
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Blog İçeriği</label>
+          <!-- <input  type="text"  class="form-control" formControlName="blogContent" > -->
+          <textarea  type="text"  class="form-control" formControlName="blogContent"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Yazar</label>
+            <input  class="form-control" formControlName="blogWriter" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Etiketler</label>
+            <input  class="form-control" formControlName="blogTag" placeholder="Lütfen Etiketlerin arasına , koyarak giriniz" >
+          </div>
+          <div class="mb-3">
+            <label for="BlogResim">Resim</label>
+            <label for="BlogResim" class="ml-5 mr-2" >Mevcut Resim =></label>
+            <img [src]="createImgPath(blogImage)" alt="product" style="height: 100px; width:100px;">
+            <div class="form-group">
+                <app-uploads (onUploadFinished)="uploadFinished($event)"> </app-uploads>
+            </div>
+           </div>
+        <!-- <div class="form-group">
+         <label for="exampleInputPassword1">Cinsiyet</label>
+         <input  class="form-control"  formControlName="gender" placeholder="">
+       </div> -->
+       <div class="card-footer">
+        <button type="submit"  (click)="updateBox()" class="btn btn-primary">Kaydet</button>
+      </div>
+      </div>
+      <!-- /.card-body -->
+
+    
+    </form>
+  </div>

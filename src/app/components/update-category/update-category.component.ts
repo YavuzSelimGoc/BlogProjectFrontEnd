@@ -3,6 +3,7 @@ import { Category } from 'src/app/models/category';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-category',
@@ -37,6 +38,7 @@ export class UpdateCategoryComponent implements OnInit{
       categoryId:this.categoryId,
       categoryName:[this.category.categoryName,Validators.required],
       categoryDescription:[this.category.categoryDescription,Validators.required],
+      categoryStatus:[this.category.categoryStatus],
     })
 
   }
@@ -45,6 +47,7 @@ export class UpdateCategoryComponent implements OnInit{
       categoryID:[null],
       categoryName:[null],
       categoryDescription:[null,Validators.required],
+      categoryStatus:[null,Validators.required],
     })
   }
 
@@ -59,6 +62,26 @@ export class UpdateCategoryComponent implements OnInit{
     else {
   
     } 
+  }
+  updateBox()
+  {
+    Swal.fire({
+      title:"Emin Misiniz",
+      text:"Güncellemek İstediğinize Emin Misiniz ?",
+      icon:"warning",
+      showCancelButton:true,
+      confirmButtonText:'Evet, Güncellensin',
+      cancelButtonText:'Hayır, Güncellenmesin'
+    }).then((result=>{
+      if(result.value){
+        Swal.fire("Güncellendi","Güncelleme işlemi başarılı","success")
+        this.update();
+       
+      }
+      else if (result.dismiss===Swal.DismissReason.cancel){
+        Swal.fire("Güncellenmedi!","Güncelleme İşleminden Vazgeçildi","error")
+      }
+    }))
   }
   getCategoryById(categoryId:number){
     this.categoryService.getCategoryById(categoryId).subscribe((response) => {
