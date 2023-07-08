@@ -3,6 +3,13 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Kategori Tablosu</h3>
+            <input
+            class="search-bar float-right"
+            placeholder="Blog Ara..."
+            [(ngModel)]="filtertext"
+            id="filtertext"
+            type="text"
+          />
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -37,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let item of category">
+                              <tr *ngFor="let item of category | category: filtertext">
           
                                 <td>{{item.categoryName}}</td>
                                 <td>{{item.categoryDescription}}</td>

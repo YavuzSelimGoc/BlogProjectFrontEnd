@@ -14,11 +14,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./blog-details.component.scss']
 })
 export class BlogDetailsComponent implements OnInit{
-  
+  filtertext="";
   blog:Blog;
   category:Category[]
+  categorys:Category
   blogId:number
   tags:string[]
+  categoryName:string
   post:Blog[]
   constructor(private httpClient:HttpClient,private BlogService:BlogService,
     private formBuilder:FormBuilder,private activatedroute:ActivatedRoute,private router:Router,private categoryService:CategoryService) {  }
@@ -41,11 +43,19 @@ export class BlogDetailsComponent implements OnInit{
         this.category = repsonse.data  
       })
     }
+    getCategoryById(id:number) {
+      this.categoryService.getCategoryById(id).subscribe(repsonse => {
+        this.categorys = repsonse.data  
+        this.categoryName=this.categorys.categoryName
+      })
+    }
     getBlogById(blogId:number){
       this.BlogService.getBlogById(blogId).subscribe((response) => {
         this.blog=response.data;
         this.tags=this.blog.blogTag.split(",")
+        this.getCategoryById(this.blog.categoryId)
       });
+     
     }
     getBlogLast5Post(){
       this.BlogService.getLast3Post().subscribe((response) => {

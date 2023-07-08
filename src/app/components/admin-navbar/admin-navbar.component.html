@@ -25,15 +25,55 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-table"></i>
+                  <p>
+                    Kategoriler
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="/admin/listCategory" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Kategoriler</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="/admin/addCategory" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Kategori Ekle</p>
+                    </a>
+                  </li>
+               
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-edit"></i>
+                  <p>
+                    Blog
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="/admin/listBlog"  class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Bloglar</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="/admin/addBlog" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Blog Ekle</p>
+                    </a>
+                  </li>
         
-          <li  class="nav-item menu-open">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p class="text-white">
-                KATEGORİLER
-              </p>
-            </a>
-          </li>
+                </ul>
+              </li>
+    
 
         </ul>
       </nav>

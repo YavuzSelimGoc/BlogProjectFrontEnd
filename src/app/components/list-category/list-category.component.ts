@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ListCategoryComponent implements OnInit {
   category:Category[]=[]
+  filtertext="";
   constructor(private httpClient:HttpClient,private categoryService:CategoryService){ }
   ngOnInit(): void {
   this.getCategory()

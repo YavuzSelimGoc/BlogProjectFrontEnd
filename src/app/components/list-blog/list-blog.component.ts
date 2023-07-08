@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ListBlogComponent implements OnInit{
   blog:Blog[]
+  filtertext="";
   constructor(private httpClient:HttpClient,private blogService:BlogService){ }
   ngOnInit(): void {
     this.getBlogs()

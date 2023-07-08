@@ -1,3 +1,4 @@
+import { BlogPipe } from './pipe/blog.pipe';
 import { NgModule } from '@angular/core';
 
 
@@ -29,6 +30,9 @@ import { ListBlogComponent } from './components/list-blog/list-blog.component';
 import { UpdateBlogComponent } from './components/update-blog/update-blog.component';
 import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 
+import { CategoryPipe } from './pipe/category.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +52,9 @@ import { BlogDetailsComponent } from './components/blog-details/blog-details.com
     AddBlogComponent,
     ListBlogComponent,
     UpdateBlogComponent,
-    BlogDetailsComponent
+    BlogDetailsComponent,
+    BlogPipe,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
