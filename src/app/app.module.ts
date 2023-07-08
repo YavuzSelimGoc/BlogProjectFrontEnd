@@ -22,6 +22,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { ListCategoryComponent } from './components/list-category/list-category.component';
+import { UpdateCategoryComponent } from './components/update-category/update-category.component';
+import { AddBlogComponent } from './components/add-blog/add-blog.component';
+import { ListBlogComponent } from './components/list-blog/list-blog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { BlogComponent } from './components/blog/blog.component';
     FooterComponent,
     AdminHeaderComponent,
     AdminNavbarComponent,
-    BlogComponent
+    BlogComponent,
+    ListCategoryComponent,
+    UpdateCategoryComponent,
+    AddBlogComponent,
+    ListBlogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,86 @@
+
+<div class="col-12 mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Blog Tablosu</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example2" class="table table-bordered table-hover dataTable dtr-inline"
+                            aria-describedby="example2_info">
+                            <thead>
+                                <tr>
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">Kategorisi
+                                    </th>
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Blog Başlığı
+                                        </th>
+
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Blog İçeriği
+                                        </th>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Blog Yazarı
+                                        </th>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Blog Tarihi
+                                        </th>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                        colspan="1" aria-sort="ascending"
+                                        aria-label="Rendering engine: activate to sort column descending">Blog Resmi
+                                        </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="Engine version: activate to sort column ascending">Durum
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="CSS grade: activate to sort column ascending">Güncelle</th>
+                                  
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-label="CSS grade: activate to sort column ascending">Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of blog">
+          
+                                <td>{{item.categoryId}}</td>
+                                <td>{{item.blogTitle}}</td>
+                                <td>{{item.blogContent}}</td>
+                                <td>{{item.blogWriter}}</td>
+                                <td>{{item.blogDate}}</td>
+                                <td>  <img [src]="createImgPath(item.blogImage)" alt="product" style="width: 75px; height: 75px;" ></td>
+                             
+                              
+                                <td ><a *ngIf="!item.blogStatus" (click)="active(item);"  href="admin/listCategory" class="btn btn-success">Aktif Et</a> <a *ngIf="item.blogStatus" (click)="passive(item);" href="admin/listCategory" class="btn btn-warning">Pasif Et</a></td>
+                                <td><a routerLink="/admin/updateCategory/blog/{{item.blogId}}" class="btn btn-primary">Güncelle</a></td>
+                                <td><a (click)="delete(item);" href="admin/listBlog" class="btn btn-danger">Sil</a></td> 
+                                
+                              </tr>
+  
+                            </tbody>
+                          
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  
+  
+    <!-- /.card -->
+  </div>
