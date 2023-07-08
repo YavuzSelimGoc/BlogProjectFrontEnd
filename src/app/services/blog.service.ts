@@ -23,8 +23,17 @@ export class BlogService {
     let newPath=this.apiUrl+"Blog/getall";
     return this.httpClient.get<ListResponseModel<Blog>>(newPath)
   }
+  getBlogsByCategoryId(categoryId:number,pages:number):Observable<ListResponseModel<Blog>>{
+    let newPath=this.apiUrl+"Blog/GetByCategoryId?categoryId="+categoryId+"&page="+pages;
+    return this.httpClient.get<ListResponseModel<Blog>>(newPath)
+  }
   getCount():Observable<number> {
     let newPath=this.apiUrl+"Blog/getCount";
+    return this.httpClient
+       .get<number>(newPath)
+   }
+   getCountByCategoryId(categoryId:number):Observable<number> {
+    let newPath=this.apiUrl+"Blog/getCountByCategory?categoryId="+categoryId;
     return this.httpClient
        .get<number>(newPath)
    }

@@ -43,6 +43,7 @@ export class BlogDetailsComponent implements OnInit{
         this.category = repsonse.data  
       })
     }
+    
     getCategoryById(id:number) {
       this.categoryService.getCategoryById(id).subscribe(repsonse => {
         this.categorys = repsonse.data  

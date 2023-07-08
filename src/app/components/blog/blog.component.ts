@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/models/blog';
@@ -14,27 +14,47 @@ export class BlogComponent implements OnInit {
   blogs: Blog[]
   last3blog: Blog[]
   pages: number
+  categoryId:number
   sayfalar: number[]
+  
   currentPage:number;
 
-  constructor(private blogService: BlogService,  private httpClient: HttpClient, private router: RouterModule) { }
+  constructor(private blogService: BlogService,  private httpClient: HttpClient, private router: RouterModule,private activatedroute:ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.activatedroute.params.subscribe(params=>{
+      if(params["categoryId"]){
+        this.categoryId=params["categoryId"]
+        if (this.getQuery("page") === null) {
+          this.currentPage = 0;
+          this.getBlogsByCategory(this.currentPage,this.categoryId)
+          this.getLast3Blog()
+          this.getCount();
+        }
+        else {
+          this.currentPage = Number(this.getQuery("page"));
+          this.getBlogs(this.currentPage)
+          this.getLast3Blog()
+          this.getCount();
+        }
+      }
+      else{
+        if (this.getQuery("page") === null) {
+          this.currentPage = 0;
+          this.getBlogs(this.currentPage)
+          this.getLast3Blog()
+          this.getCount();
+        }
+        else {
+          this.currentPage = Number(this.getQuery("page"));
+          this.getBlogs(this.currentPage)
+          this.getLast3Blog()
+          this.getCount();
+        }
+      }
+      })
 
-    if (this.getQuery("page") === null) {
-      this.currentPage = 0;
-      this.getBlogs(this.currentPage)
-      this.getLast3Blog()
-      
-      this.getCount();
-    }
-    else {
-      this.currentPage = Number(this.getQuery("page"));
-      this.getBlogs(this.currentPage)
-      this.getLast3Blog()
-     
-      this.getCount();
-    }
+  
 
   }
 
@@ -50,16 +70,33 @@ export class BlogComponent implements OnInit {
         this.sayfalar.push(i)
       }
     })
+  }
+  getCountByCategoryId(categoryId:number) {
+    this.blogService.getCountByCategoryId(categoryId).subscribe(repsonse => {
+      this.pages = repsonse
+      this.sayfalar = []
+      for (let i = 0; i < this.pages; i++) {
+        this.sayfalar.push(i)
+      }
+    })
 
 
   }
-
   getBlogs(page) {
     this.blogService.getBlogsActive(page).subscribe(repsonse => {
       this.blogs = repsonse.data
       this.blogs.forEach(blog => {
         if (blog.blogContent.length >= 180)
-          blog.blogContent = blog.blogContent.slice(0, 175) + '(...)'
+          blog.blogContent = blog.blogContent.slice(0, 150) + '(...)'
+      });
+    })
+  }
+  getBlogsByCategory(page:number,categoryId:number) {
+    this.blogService.getBlogsByCategoryId(categoryId,page).subscribe(repsonse => {
+      this.blogs = repsonse.data
+      this.blogs.forEach(blog => {
+        if (blog.blogContent.length >= 180)
+          blog.blogContent = blog.blogContent.slice(0, 150) + '(...)'
       });
     })
   }

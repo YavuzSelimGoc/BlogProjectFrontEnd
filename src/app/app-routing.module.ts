@@ -19,7 +19,8 @@ const routes: Routes = [
   {
     path: "", component: PublicLayoutComponent, children: [
       {path:"",pathMatch:"full",component:IndexComponent},
-      {path:"blog",pathMatch:"full",component:BlogComponent},
+      {path:"blog",component:BlogComponent},
+      {path:"blog/:categoryId",component:BlogComponent},
       {path:"blogDetails/:blogId",component:BlogDetailsComponent},
    
     ]
