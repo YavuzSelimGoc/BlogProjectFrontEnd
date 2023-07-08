@@ -17,6 +17,11 @@ import { LoginComponent } from './components/login/login.component';
 import { IndexComponent } from './components/index/index.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { UploadsComponent } from './components/uploads/uploads.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { UploadsComponent } from './components/uploads/uploads.component';
     LoginComponent,
     IndexComponent,
     AddCategoryComponent,
-    UploadsComponent
+    UploadsComponent,
+    HeaderComponent,
+    FooterComponent,
+    AdminHeaderComponent,
+    AdminNavbarComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
