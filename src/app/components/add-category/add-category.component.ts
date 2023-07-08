@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from './../../services/category.service';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddCategoryComponent {
   categoryAddForm:FormGroup;
-  constructor(private httpClient:HttpClient,private formBuilder:FormBuilder,private categoryService:CategoryService,private router:Router) { }
+  constructor(private httpClient:HttpClient,private formBuilder:FormBuilder,private toastrService:ToastrService,private categoryService:CategoryService,private router:Router) { }
   ngOnInit(): void {
    this.createCategoryAddForm()
   }
@@ -26,10 +27,13 @@ export class AddCategoryComponent {
       let categoryModel =Object.assign({},this.categoryAddForm.value) 
       this.categoryService.add(categoryModel).subscribe(response=>{
         this.router.navigate(["/admin/listCategory"])
+        this.toastrService.success("Kategori Ekleme İşlemi Başarılı","Tebrikler")
+        
       });
     }
     else {
       console.log("Kategori Eklenemedi");
+      this.toastrService.error("Kategori Ekleme İşlemi Başarısız","Hata")
     } 
   }
 

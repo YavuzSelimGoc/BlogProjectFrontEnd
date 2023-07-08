@@ -1,3 +1,4 @@
+import { AdminIndexComponent } from './components/admin-index/admin-index.component';
 import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 import { ListCategoryComponent } from './components/list-category/list-category.component';
 import { UpdateCategoryComponent } from './components/update-category/update-category.component';
@@ -12,11 +13,12 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { AddBlogComponent } from './components/add-blog/add-blog.component';
 import { ListBlogComponent } from './components/list-blog/list-blog.component';
 import { UpdateBlogComponent } from './components/update-blog/update-blog.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
     path: "", component: PublicLayoutComponent, children: [
-      {path:"",pathMatch:"full",component:BlogComponent},
+      {path:"",pathMatch:"full",component:IndexComponent},
       {path:"blog",pathMatch:"full",component:BlogComponent},
       {path:"blogDetails/:blogId",component:BlogDetailsComponent},
    
@@ -30,12 +32,13 @@ const routes: Routes = [
   },
   {
     path: "admin", component: PrivateLayoutComponent, children: [
-     { path: "addCategory", pathMatch: "full", component: AddCategoryComponent },
-     { path: "addBlog", pathMatch: "full", component: AddBlogComponent },
-     { path: "listCategory",  component: ListCategoryComponent },
-     { path: "listBlog",  component: ListBlogComponent },
-     {path:"updateCategory/category/:categoryId",component:UpdateCategoryComponent},
-     {path:"updateBlog/blog/:blogId",component:UpdateBlogComponent},
+     { path: "", pathMatch: "full", component: AdminIndexComponent,canActivate:[LoginGuard] },
+     { path: "addCategory", pathMatch: "full", component: AddCategoryComponent,canActivate:[LoginGuard] },
+     { path: "addBlog", pathMatch: "full", component: AddBlogComponent ,canActivate:[LoginGuard]},
+     { path: "listCategory",  component: ListCategoryComponent ,canActivate:[LoginGuard]},
+     { path: "listBlog",  component: ListBlogComponent ,canActivate:[LoginGuard]},
+     {path:"updateCategory/category/:categoryId",component:UpdateCategoryComponent,canActivate:[LoginGuard]},
+     {path:"updateBlog/blog/:blogId",component:UpdateBlogComponent,canActivate:[LoginGuard]},
      
      
  

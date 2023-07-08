@@ -31,6 +31,7 @@ import { UpdateBlogComponent } from './components/update-blog/update-blog.compon
 import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 
 import { CategoryPipe } from './pipe/category.pipe';
+import { AdminIndexComponent } from './components/admin-index/admin-index.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { CategoryPipe } from './pipe/category.pipe';
     UpdateBlogComponent,
     BlogDetailsComponent,
     BlogPipe,
-    CategoryPipe
+    CategoryPipe,
+    AdminIndexComponent
   ],
   imports: [
     BrowserModule,

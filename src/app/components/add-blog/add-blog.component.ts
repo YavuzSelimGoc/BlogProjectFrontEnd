@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { BlogService } from './../../services/blog.service';
 import { CategoryService } from './../../services/category.service';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +17,7 @@ export class AddBlogComponent implements OnInit{
   blogAddForm:FormGroup;
   public resp: {dbPath:''};
   category:Category[]
-  constructor(private httpClient:HttpClient,private formBuilder:FormBuilder,private categoryService:CategoryService,private blogService:BlogService,private router:Router) { }
+  constructor(private httpClient:HttpClient,private formBuilder:FormBuilder,private toastrService:ToastrService,private categoryService:CategoryService,private blogService:BlogService,private router:Router) { }
   ngOnInit(): void {
    this.createBlogAddForm()
    this.getCategory()
@@ -45,10 +46,13 @@ add(){
       let productModel =Object.assign({},this.blogAddForm.value) 
       this.blogService.add(productModel).subscribe(response=>{
         this.router.navigate(["/admin/listBlog"])
+        this.toastrService.success("Blog Ekleme İşlemi Başarılı","Tebrikler")
+      
       });
     }
     else {
       console.log("Kategori Eklenemedi");
+        this.toastrService.error("Blog Ekleme İşlemi Başarısız","Hata")
     } 
   }
   uploadFinished = (event) => { 

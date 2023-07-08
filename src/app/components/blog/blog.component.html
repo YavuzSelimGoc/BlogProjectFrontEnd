@@ -11,13 +11,13 @@
           <article>
 
             <div class="post-img">
-              <img [src]="createImgPath(item.blogImage)" alt="product" class="img-fluid" >
+              <img routerLink="/blogDetails/{{item.blogId}}" [src]="createImgPath(item.blogImage)" alt="product" class="img-fluid" >
             </div>
 
             <p class="post-category">{{item.categoryId}}</p>
 
             <h2 class="title">
-              <a href="blog-details.html">{{item.blogTitle}}</a>
+              <a routerLink="/blogDetails/{{item.blogId}}" href="blog-details.html">{{item.blogTitle}}</a>
             </h2>
 
             <div class="d-flex align-items-center">
