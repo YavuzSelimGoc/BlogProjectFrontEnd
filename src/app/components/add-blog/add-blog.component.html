@@ -11,6 +11,10 @@
           <input  class="form-control" formControlName="blogTitle" >
         </div>
         <div class="form-group">
+          <label for="exampleInputEmail1">Blog Kapak Metni</label>
+          <input  class="form-control" formControlName="blogText" >
+        </div>
+        <div class="form-group">
             <label for="exampleInputEmail1">Ürünün Kategorisi</label>
             <!-- <input type="number"
             id="categoryID"
@@ -23,15 +27,33 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Blog İçeriği</label>
           <!-- <input  type="text"  class="form-control" formControlName="blogContent" > -->
-          <textarea  type="text"  class="form-control" formControlName="blogContent"></textarea>
+          <!-- <textarea  type="text"  class="form-control" formControlName="blogContent"></textarea> -->
+          <!-- <ckeditor style="height: 350px !important;" [editor]="Editor" formControlName="blogContent"  [config]="editorConfig"></ckeditor> -->
+          <ckeditor class="mt-5" 
+          
+          formControlName="blogContent" 
+          type="divarea"
+      ></ckeditor>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Yazar</label>
             <input  class="form-control" formControlName="blogWriter" >
           </div>
           <div class="form-group">
+            <label for="exampleInputPassword1">BlogUrl</label>
+            <input (change)="chechkUrl(el)" #el  class="form-control" formControlName="blogUrl" >
+          </div>
+          <div class="form-group">
             <label for="exampleInputPassword1">Etiketler</label>
             <input  class="form-control" formControlName="blogTag" placeholder="Lütfen Etiketlerin arasına , koyarak giriniz" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Meta Başlık</label>
+            <input  class="form-control" formControlName="metaTitle" placeholder="Lütfen Etiketlerin arasına , koyarak giriniz" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Meta Açıklama</label>
+            <input  class="form-control" formControlName="metaDescription" placeholder="Lütfen Etiketlerin arasına , koyarak giriniz" >
           </div>
           <div class="mb-3">
             <label for="BlogResim">Resim</label>

@@ -57,9 +57,13 @@ export class UpdateBlogComponent implements OnInit{
       blogId:["",Validators.required],
       categoryId:["",Validators.required],
       blogTitle:[null,Validators.required],
+      blogText:[null,Validators.required],
       blogContent:["",Validators.required],
       blogWriter:["",Validators.required],
+      blogUrl:["",Validators.required],
       blogTag:["",Validators.required],
+      metaTitle:["",Validators.required],
+      metaDescription:["",Validators.required],
       blogDate:["",Validators.required],
       blogImage:["",Validators.required],
       blogStatus:[true,Validators.required],
@@ -119,9 +123,13 @@ export class UpdateBlogComponent implements OnInit{
       blogId:[this.blog.blogId],
       categoryId:[this.blog.categoryId],
       blogTitle:[this.blog.blogTitle],
+      blogText:[this.blog.blogText],
       blogContent:[this.blog.blogContent],
       blogWriter:[this.blog.blogWriter],
+      blogUrl:[this.blog.blogUrl],
       blogTag:[this.blog.blogTag],
+      metaTitle:[this.blog.metaTitle],
+      metaDescription:[this.blog.metaDescription],
       blogDate:[this.blog.blogDate],
       blogImage:[this.blog.blogImage],
       blogStatus:[this.blog.blogStatus],
@@ -135,6 +143,7 @@ export class UpdateBlogComponent implements OnInit{
    createImgPath = (serverPath: string) => { 
     return environment.imgUrl+`${serverPath}`; 
   }
+
 
 
   }

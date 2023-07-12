@@ -1,3 +1,7 @@
 export interface User{
-  imagePath:string;
+firstName:string
+lastName:string
+userName:string
+password:string
+
 }

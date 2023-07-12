@@ -4,9 +4,13 @@
 // bu dosya localhost ortamında çalışırken, algılanır.
 
 export const environment = {
-  production: false,
-  imgUrl:"https://localhost:5001/",
-  apiUrl:"https://localhost:5001/"
+    production: false,
+    imgUrl:"https://localhost:5001/",
+   apiUrl:"https://localhost:5001/"
+    // production: true,
+    // imgUrl:"/",
+    // apiUrl:"/"
+
 };
 
 /*

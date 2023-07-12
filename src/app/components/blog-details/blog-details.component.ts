@@ -7,6 +7,8 @@ import { Blog } from 'src/app/models/blog';
 import { BlogService } from 'src/app/services/blog.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { environment } from 'src/environments/environment';
+import { Location } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-details',
@@ -15,28 +17,31 @@ import { environment } from 'src/environments/environment';
 })
 export class BlogDetailsComponent implements OnInit{
   filtertext="";
+  slug:any
   blog:Blog;
+  blogs:Blog[];
   category:Category[]
   categorys:Category
-  blogId:number
   tags:string[]
   categoryName:string
   post:Blog[]
-  constructor(private httpClient:HttpClient,private BlogService:BlogService,
-    private formBuilder:FormBuilder,private activatedroute:ActivatedRoute,private router:Router,private categoryService:CategoryService) {  }
+  constructor(private httpClient:HttpClient,private BlogService:BlogService,private location:Location,
+    private formBuilder:FormBuilder,private activatedroute:ActivatedRoute,private metaTagService:Meta,private title:Title, private router:Router,private categoryService:CategoryService) {  }
     ngOnInit(): void {
       this.activatedroute.params.subscribe(params=>{
-        if(params["blogId"]){
-          this.blogId=params["blogId"]
-          this.getBlogById(params["blogId"])
+        if(params["blogUrl"]){
+          
+          this.getBlogBySlug(params["blogUrl"])
           this.getCategory()
-          this.getBlogLast5Post()
+        
+         this.getBlogLast5Post()
           }
-        else{this.getBlogById(params["blogId"])}
-        this.blogId=params["blogId"]
-        this.getCategory()
+        else{this.getBlogBySlug(params["blogUrl"])}
         this.getBlogLast5Post()
+        this.getCategory()
+      
         })
+        
     }
     getCategory() {
       this.categoryService.getCategory().subscribe(repsonse => {
@@ -48,16 +53,45 @@ export class BlogDetailsComponent implements OnInit{
       this.categoryService.getCategoryById(id).subscribe(repsonse => {
         this.categorys = repsonse.data  
         this.categoryName=this.categorys.categoryName
+     
       })
     }
-    getBlogById(blogId:number){
-      this.BlogService.getBlogById(blogId).subscribe((response) => {
+ 
+    
+    // getBlogById(blogId:number){
+    //   this.BlogService.getBlogById(blogId).subscribe((response) => {
+    //     this.blog=response.data;
+    //     this.title.setTitle(this.blog.metaTitle)
+    //     this.metaTagService.addTags([
+    //       { name:'description',content:this.blog.metaDescription},
+    //       { name:'robots',content:'blog, blogcontent'},
+    //       { name:'author',content:'ArkSoft'},
+    //       { name:'viewport',content:'width=device-width'},
+    //      ]);
+
+    //     this.tags=this.blog.blogTag.split(",")
+    //     this.getCategoryById(this.blog.categoryId)
+        
+    //   });
+    // }
+    getBlogBySlug(slug:string){
+      this.BlogService.getBlogBySlug(slug).subscribe((response) => {
         this.blog=response.data;
+        this.title.setTitle(this.blog.metaTitle)
+        this.metaTagService.addTags([
+          { name:'description',content:this.blog.metaDescription},
+          { name:'robots',content:'blog, blogcontent'},
+          { name:'author',content:'ArkSoft'},
+          { name:'viewport',content:'width=device-width'},
+         ]);
+        
+
         this.tags=this.blog.blogTag.split(",")
         this.getCategoryById(this.blog.categoryId)
+        
       });
-     
     }
+
     getBlogLast5Post(){
       this.BlogService.getLast3Post().subscribe((response) => {
         this.post=response.data;

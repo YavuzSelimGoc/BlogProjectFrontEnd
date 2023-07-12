@@ -11,6 +11,10 @@
           <input  class="form-control" formControlName="blogTitle" >
         </div>
         <div class="form-group">
+          <label for="exampleInputEmail1">Blog Kapak Metni</label>
+          <input  class="form-control" formControlName="blogText" >
+        </div>
+        <div class="form-group">
             <label for="exampleInputEmail1">Ürünün Kategorisi</label>
             <!-- <input type="number"
             id="categoryID"
@@ -23,11 +27,29 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Blog İçeriği</label>
           <!-- <input  type="text"  class="form-control" formControlName="blogContent" > -->
-          <textarea  type="text"  class="form-control" formControlName="blogContent"></textarea>
+          <ckeditor class="mt-5" 
+          data="<p>Some initial data</p>"
+          formControlName="blogContent" 
+          type="divarea"
+      ></ckeditor> 
+      <!-- <ckeditor name="ckeditor_text" formControlName="blogContent" editorUrl="https://cdn.ckeditor.com/4.14.0/full/ckeditor.js" [config]="ckEditorConfig" ></ckeditor> -->
+         
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Yazar</label>
             <input  class="form-control" formControlName="blogWriter" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Blog Url</label>
+            <input  class="form-control" formControlName="blogUrl" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Meta Başlık</label>
+            <input  class="form-control" formControlName="metaTitle" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Meta Açıklama</label>
+            <input  class="form-control" formControlName="metaDescription" >
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Etiketler</label>

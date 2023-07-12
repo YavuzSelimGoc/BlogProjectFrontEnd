@@ -50,7 +50,7 @@
                                 <td>{{item.categoryDescription}}</td>
                               
                                 <td ><a *ngIf="!item.categoryStatus" (click)="active(item);"  href="admin/listCategory" class="btn btn-success">Aktif Et</a> <a *ngIf="item.categoryStatus" (click)="passive(item);" href="admin/listCategory" class="btn btn-warning">Pasif Et</a></td>
-                                <td><a routerLink="/admin/updateCategory/category/{{item.categoryId}}" class="btn btn-primary">Güncelle</a></td>
+                                <td><a routerLink="/admin/updateCategory/category/{{item.categoryId}}" href="/admin/updateCategory/category/{{item.categoryId}}" class="btn btn-primary">Güncelle</a></td>
                                 <td><a (click)="deleteBox(item);"  class="btn btn-danger">Sil</a></td> 
                                 
                               </tr>

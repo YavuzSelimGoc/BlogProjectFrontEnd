@@ -1,5 +1,6 @@
 import { BlogPipe } from './pipe/blog.pipe';
 import { NgModule } from '@angular/core';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +33,10 @@ import { BlogDetailsComponent } from './components/blog-details/blog-details.com
 
 import { CategoryPipe } from './pipe/category.pipe';
 import { AdminIndexComponent } from './components/admin-index/admin-index.component';
+import { CkEditorTestComponent } from './components/ck-editor-test/ck-editor-test.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AddRoleComponent } from './components/add-role/add-role.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
 
 
 @NgModule({
@@ -56,7 +61,11 @@ import { AdminIndexComponent } from './components/admin-index/admin-index.compon
     BlogDetailsComponent,
     BlogPipe,
     CategoryPipe,
-    AdminIndexComponent
+    AdminIndexComponent,
+    CkEditorTestComponent,
+    RegisterComponent,
+    AddRoleComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +73,8 @@ import { AdminIndexComponent } from './components/admin-index/admin-index.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CKEditorModule,
+    
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

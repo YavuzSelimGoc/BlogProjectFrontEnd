@@ -11,15 +11,15 @@
           <article>
 
             <div class="post-img">
-              <img routerLink="/blogDetails/{{item.blogId}}" [src]="createImgPath(item.blogImage)" alt="product" class="img-fluid" >
+              <img routerLink="/blog/{{item.blogUrl}}" href="/blog/{{item.blogUrl}}" [src]="createImgPath(item.blogImage)" alt="product" class="img-fluid" >
             </div>
 
-            <p class="post-category">{{item.categoryId}}</p>
+        {{item.categoryName}}
 
             <h2 class="title">
-              <a routerLink="/blogDetails/{{item.blogId}}" href="blog-details.html">{{item.blogTitle}}</a>
+              <a routerLink="/blog/{{item.blogUrl}}" href="/blog/{{item.blogUrl}}" >{{item.blogTitle}}</a>
             </h2>
-            <p routerLink="/blogDetails/{{item.blogId}}">{{item.blogContent}}</p>
+            <p routerLink="/blog/{{item.blogUrl}}" href="/blog/{{item.blogUrl}}" >{{item.blogText}}</p>
 
             <div class="d-flex align-items-center">
               <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
@@ -39,9 +39,11 @@
       </div><!-- End blog posts list -->
 
       <div class="pagination d-flex justify-content-center">
-        <ul>
+        <ul *ngIf="!isTrue" >
           <li *ngFor="let item of sayfalar" class="active"> <a href="/blog?page={{item+1}}" [class.active]="currentPage === item+1">{{item+1}}</a></li>
-          
+        </ul>
+        <ul *ngIf="isTrue" >
+          <li *ngFor="let item of sayfalar" class="active"> <a href="/blog/{{categoryId}}" [class.active]="currentPage === item+1">{{item+1}}</a></li>
         </ul>
       </div><!-- End pagination -->
 

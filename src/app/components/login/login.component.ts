@@ -1,6 +1,7 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,9 +13,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit{
   loginForm:FormGroup
-  constructor(private formBuilder:FormBuilder,private authService:AuthService,private router:Router ,private toastrService:ToastrService) { }
+  constructor(private formBuilder:FormBuilder,private metaTagService:Meta,private authService:AuthService,private router:Router ,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
+    this.metaTagService.addTags([
+      { name:'keywords',content:'Angular, Angular SEO'},
+      { name:'robots',content:'Login, LoginWord , PrivateLogin'},
+      { name:'author',content:'Yavuz'},
+      { name:'viewport',content:'width=device-width'},
+     
+     ]);
     this.createLoginForm();
   }
   createLoginForm(){

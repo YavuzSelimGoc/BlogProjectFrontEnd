@@ -1,0 +1,11 @@
+<!-- 
+<form [formGroup]="ckAddForm">
+<div style="margin-top: 250px !important;" class="mt-5">
+    <ckeditor style="height: 350px !important;" [editor]="Editor" formControlName="content"  [config]="editorConfig"></ckeditor>
+
+</div>
+<button type="submit" (click)="add()"  class="btn btn-primary">Kaydet</button>
+</form> -->
+<div  style="margin-top: 300px!important;" class="mt-5">
+    <ckeditor name="ckeditor_text" formControlName="ckeditor_text" editorUrl="https://cdn.ckeditor.com/4.14.0/full/ckeditor.js" [config]="ckEditorConfig" ></ckeditor>
+</div>

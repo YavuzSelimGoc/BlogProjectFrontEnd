@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import * as Editor from 'ckeditor5/build/ckeditor';
+import { Blog } from 'src/app/models/blog';
+import { CKEditor4 } from 'ckeditor4-angular/ckeditor';
 
 @Component({
   selector: 'app-add-blog',
@@ -15,12 +18,16 @@ import { environment } from '../../../environments/environment';
 })
 export class AddBlogComponent implements OnInit{
   blogAddForm:FormGroup;
+  blog:Blog[]
+  isTrue:boolean
   public resp: {dbPath:''};
   category:Category[]
+  public Editor = Editor;
   constructor(private httpClient:HttpClient,private formBuilder:FormBuilder,private toastrService:ToastrService,private categoryService:CategoryService,private blogService:BlogService,private router:Router) { }
   ngOnInit(): void {
    this.createBlogAddForm()
    this.getCategory()
+   
   }
   getCategory() {
     this.categoryService.getCategory().subscribe(repsonse => {
@@ -34,13 +41,43 @@ export class AddBlogComponent implements OnInit{
       blogImage :["",Validators.required],
       blogContent :["",Validators.required],
       blogWriter :["",Validators.required],
+      blogText :["",Validators.required],
+      metaTitle :["",Validators.required],
+      metaDescription :["",Validators.required],
+      blogUrl :["",Validators.required],
       blogTag :["",Validators.required],
       
     })
   }
+  chechkUrl(el) {
+ 
+    if (el.value != "") {
+      this.isTrue=false
+      this.blogService.getBlogs().subscribe(repsonse => {
+        this.blog = repsonse.data
+        this.blog.forEach(element => {
+          if(element.blogUrl===el.value)
+          {
+            this.isTrue=true
+            this.toastrService.error("Aynı Url Yapısına Sahip Bir Blog Var Lütfen Başka Şekilde İsimlendirin","Hata")
+          }
+          else{
+        
+          }
+        });
+      })
+    
+      }
+  }
 
 add(){
-  console.log(this.blogAddForm.value)
+
+   if(this.isTrue===true)
+   {
+    this.toastrService.error("Aynı Url Yapısına Sahip Bir Blog Var Lütfen Başka Şekilde İsimlendirin ","Hata")
+   }  
+   else {
+
     this.blogAddForm.controls['blogImage'].setValue(this.resp.dbPath);
     if(this.blogAddForm.valid){
       let productModel =Object.assign({},this.blogAddForm.value) 
@@ -53,8 +90,10 @@ add(){
     else {
       console.log("Kategori Eklenemedi");
         this.toastrService.error("Blog Ekleme İşlemi Başarısız","Hata")
-    } 
+    }  
+   }
   }
+
   uploadFinished = (event) => { 
     this.resp = event; 
   }
@@ -63,5 +102,38 @@ add(){
     return environment.imgUrl+`${serverPath}`; 
     
   }
+  editorConfig = {
+
+    toolbar: {
+      items: [
+        'heading',
+        '|',
+        'bold',
+        'italic',
+        'link',
+        'bulletedList',
+        'numberedList',
+        '|',
+        'outdent',
+        'indent',
+        '|',
+        'imageUpload',
+        'blockQuote',
+        'insertTable',
+        'mediaEmbed',
+        'undo',
+        'redo'
+      ]
+    },
+    simpleUpload: {
+      // The URL that the images are uploaded to.
+      uploadUrl: environment.apiUrl+'api/upload',
+
+  },
+    language: 'tr',
+    licenseKey: '',
+
+
+  };
 
 }
