@@ -7,6 +7,7 @@ export interface BlogDto{
     blogContent :string
     blogWriter :string
     blogText:string
+    blogFaq:string
     metaTitle :string
     metaDescription :string
     blogUrl :string

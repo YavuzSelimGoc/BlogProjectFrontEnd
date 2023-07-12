@@ -35,9 +35,7 @@ export class CkEditorTestComponent implements OnInit{
   //  this.clk()
   
   }
-  // clk(){
-  //   this.location.replaceState(window.location.pathname+`/yavuz`);
-  // }
+ 
   public Editor = Editor;
   createCategoryAddForm(){
     this.ckAddForm=this.formBuilder.group({

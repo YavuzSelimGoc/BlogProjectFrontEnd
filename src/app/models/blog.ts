@@ -7,6 +7,7 @@ export interface Blog{
       blogWriter :string
       metaTitle :string
       blogText:string
+      blogFaq:string
       metaDescription :string
       blogUrl :string
       blogDate :string

@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit{
     this.metaTagService.addTags([
       { name:'keywords',content:'Angular, Angular SEO'},
       { name:'robots',content:'Login, LoginWord , PrivateLogin'},
-      { name:'author',content:'Yavuz'},
+      { name:'author',content:'Ark Soft'},
       { name:'viewport',content:'width=device-width'},
      
      ]);

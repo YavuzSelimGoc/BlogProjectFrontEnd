@@ -40,6 +40,7 @@ export class AddBlogComponent implements OnInit{
       blogTitle :["",Validators.required],
       blogImage :["",Validators.required],
       blogContent :["",Validators.required],
+      blogFaq :["",Validators.required],
       blogWriter :["",Validators.required],
       blogText :["",Validators.required],
       metaTitle :["",Validators.required],

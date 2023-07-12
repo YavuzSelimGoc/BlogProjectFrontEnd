@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
    this.metaTagService.addTags([
     { name:'keywords',content:'Angular, Angular SEO'},
     { name:'robots',content:'index, follow'},
-    { name:'author',content:'Yavuz'},
+    { name:'author',content:'Ark Soft'},
     { name:'viewport',content:'width=device-width'},
     { charset:'UTF-8'},
     
