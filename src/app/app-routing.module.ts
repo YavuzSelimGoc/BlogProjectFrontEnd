@@ -25,8 +25,7 @@ const routes: Routes = [
       {path:"blog",component:BlogComponent},
       {path:"blogs/:categoryId",component:BlogComponent},
       {path:"blog/:blogUrl",component:BlogDetailsComponent},
-      {path:"ck",component:CkEditorTestComponent},
-   
+ 
     ]
   },
   {
@@ -45,8 +44,8 @@ const routes: Routes = [
      { path: "listBlog",  component: ListBlogComponent ,canActivate:[LoginGuard]},
      {path:"updateCategory/category/:categoryId",component:UpdateCategoryComponent,canActivate:[LoginGuard]},
      {path:"updateBlog/blog/:blogId",component:UpdateBlogComponent,canActivate:[LoginGuard]},
-     {path:"register",component:RegisterComponent},
-     {path:"listUser",component:ListUserComponent},
+     {path:"register",component:RegisterComponent,canActivate:[LoginGuard]},
+     {path:"listUser",component:ListUserComponent,canActivate:[LoginGuard]},
    
      
  
