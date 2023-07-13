@@ -9,6 +9,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
+import { Renderer2 } from '@angular/core';
+
 
 @Component({
   selector: 'app-blog-details',
@@ -23,11 +25,14 @@ export class BlogDetailsComponent implements OnInit{
   category:Category[]
   categorys:Category
   tags:string[]
+  veri="BU BİR DENEME VERİSİDİR"
   categoryName:string
   post:Blog[]
   constructor(private httpClient:HttpClient,private BlogService:BlogService,private location:Location,
-    private formBuilder:FormBuilder,private activatedroute:ActivatedRoute,private metaTagService:Meta,private title:Title, private router:Router,private categoryService:CategoryService) {  }
+    private formBuilder:FormBuilder,private activatedroute:ActivatedRoute,private renderer: Renderer2,private metaTagService:Meta,private title:Title, private router:Router,private categoryService:CategoryService) {  }
     ngOnInit(): void {
+
+    
       this.activatedroute.params.subscribe(params=>{
         if(params["blogUrl"]){
           
@@ -88,7 +93,20 @@ export class BlogDetailsComponent implements OnInit{
 
         this.tags=this.blog.blogTag.split(",")
         this.getCategoryById(this.blog.categoryId)
-        
+
+        const script = this.renderer.createElement('script');
+        const veri = this.blog.blogFaq; 
+        const text = this.renderer.createText(veri);
+        this.renderer.appendChild(script, text);
+        this.renderer.appendChild(document.body, script);
+
+        const script2 = this.renderer.createElement('script');
+        const veri2 = this.blog.blogFaq; 
+        const text2 = this.renderer.createText(veri2);
+        this.renderer.appendChild(script2, text2);
+        this.renderer.appendChild(document.head, script2);
+      
+  
       });
     }
 
