@@ -7,9 +7,9 @@ export const environment = {
     production: false,
     imgUrl:"https://localhost:5001/",
    apiUrl:"https://localhost:5001/"
-    // production: true,
-    // imgUrl:"/",
-    // apiUrl:"/"
+     // production: true,
+     // imgUrl:"/",
+     // apiUrl:"/"
 
 };
 
